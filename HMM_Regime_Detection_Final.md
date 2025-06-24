@@ -221,15 +221,18 @@ time $t$ and being in state $j$ at time $t$.
 
 The recursion is:
 
-- **Initialization**: $$
+- **Initialization**:
+  $$
   \alpha_1(j) = \delta_j \cdot f_j(x_1)
   $$
 
-- **Induction** (for $t = 2, ..., T$): $$
+- **Induction** (for $t = 2, ..., T$):
+  $$
   \alpha_t(j) = \sum_{i=1}^m \alpha_{t-1}(i) \cdot \gamma_{ij} \cdot f_j(x_t)
   $$
 
-- **Termination (total likelihood)**: $$
+- **Termination (total likelihood)**:
+  $$
   \mathcal{L}(\theta) = \sum_{j=1}^m \alpha_T(j), \quad \log \mathcal{L}(\theta) = \log\left( \sum_{j=1}^m \alpha_T(j) \right)
   $$
 

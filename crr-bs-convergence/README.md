@@ -149,6 +149,14 @@ where the right-hand side is the Black-Scholes price. The key ingredient is the 
 
 ---
 
+## Interactive Dashboard
+
+View the full interactive Plotly dashboard directly in the browser:
+
+👉 [Open Dashboard](https://htmlpreview.github.io/?https://raw.githubusercontent.com/FedericoGasparri/Academic-projects/main/crr-bs-convergence/crr_bs_dashboard.html)
+
+---
+
 ## Authors
 
 - Simone Cuonzo

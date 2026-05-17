@@ -32,8 +32,8 @@ crr_bs_convergence/
 ├── notebooks/
 │   └── analysis.ipynb       # End-to-end Jupyter notebook
 ├── tests/
-│   └── test_models.py       # pytest unit tests
-└── paper/                   # LaTeX source (Overleaf)
+    └── test_models.py       # pytest unit tests
+
 ```
 
 ---

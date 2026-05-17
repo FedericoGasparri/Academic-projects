@@ -17,10 +17,8 @@ from plotly.subplots import make_subplots
 
 from .models import OptionParams, convergence_series, stock_tree, crr_price, black_scholes
 
-
-# ---------------------------------------------------------------------------
 # Colour palette (consistent across all figures)
-# ---------------------------------------------------------------------------
+
 _BLUE   = "#2563EB"   # CRR parametrisation
 _GREEN  = "#059669"   # JR parametrisation
 _ORANGE = "#EA580C"   # Black-Scholes
@@ -41,10 +39,7 @@ _LAYOUT = dict(
     ),
 )
 
-
-# ---------------------------------------------------------------------------
 # 1. Convergence plot  (main figure)
-# ---------------------------------------------------------------------------
 
 def convergence_plot(
     params:   OptionParams,
@@ -145,10 +140,7 @@ def convergence_plot(
 
     return fig
 
-
-# ---------------------------------------------------------------------------
 # 2. Parity oscillation: even vs odd N
-# ---------------------------------------------------------------------------
 
 def parity_oscillation_plot(params: OptionParams, N_max: int = 80) -> go.Figure:
     """
@@ -192,10 +184,7 @@ def parity_oscillation_plot(params: OptionParams, N_max: int = 80) -> go.Figure:
     )
     return fig
 
-
-# ---------------------------------------------------------------------------
 # 3. Sensitivity: BS vs CRR(N=50) across a range of σ or S0
-# ---------------------------------------------------------------------------
 
 def sensitivity_plot(
     params: OptionParams,
@@ -263,10 +252,7 @@ def sensitivity_plot(
     )
     return fig
 
-
-# ---------------------------------------------------------------------------
 # 4. Binomial stock tree (for small N)
-# ---------------------------------------------------------------------------
 
 def stock_tree_plot(params: OptionParams, N: int = 5) -> go.Figure:
     """
@@ -339,10 +325,7 @@ def stock_tree_plot(params: OptionParams, N: int = 5) -> go.Figure:
     )
     return fig
 
-
-# ---------------------------------------------------------------------------
 # 5. All-in-one dashboard (saved as HTML)
-# ---------------------------------------------------------------------------
 
 def full_dashboard(params: OptionParams, output_path: str = "dashboard.html") -> None:
     """

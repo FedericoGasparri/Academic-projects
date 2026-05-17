@@ -29,10 +29,7 @@ from src import (
     stock_tree_plot, full_dashboard,
 )
 
-
-# ---------------------------------------------------------------------------
-# Default parameters (from the original university paper)
-# ---------------------------------------------------------------------------
+# Default parameters (from the original university lecture)
 PAPER_PARAMS = OptionParams(
     S0    = 27.0,
     K     = 25.0,
@@ -45,10 +42,7 @@ PAPER_PARAMS = OptionParams(
     discounting    = DiscountingMode.CONTINUOUS,
 )
 
-
-# ---------------------------------------------------------------------------
 # CLI
-# ---------------------------------------------------------------------------
 def parse_args():
     p = argparse.ArgumentParser(
         description="CRR / Black-Scholes convergence analysis"
@@ -70,10 +64,7 @@ def parse_args():
                    help="Output HTML file for the dashboard.")
     return p.parse_args()
 
-
-# ---------------------------------------------------------------------------
 # Print summary table
-# ---------------------------------------------------------------------------
 def print_summary(params: OptionParams, N_values=(5, 10, 25, 50, 100, 200)):
     bs = black_scholes(params)
     print("\n" + "=" * 65)
@@ -96,10 +87,7 @@ def print_summary(params: OptionParams, N_values=(5, 10, 25, 50, 100, 200)):
 
     print("=" * 65 + "\n")
 
-
-# ---------------------------------------------------------------------------
 # Main
-# ---------------------------------------------------------------------------
 def main():
     args = parse_args()
 

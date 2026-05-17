@@ -16,10 +16,7 @@ from scipy.stats import norm
 from dataclasses import dataclass
 from enum import Enum
 
-
-# ---------------------------------------------------------------------------
 # Enumerations and config
-# ---------------------------------------------------------------------------
 
 class OptionType(str, Enum):
     CALL = "call"
@@ -51,10 +48,7 @@ class OptionParams:
     param:           Parametrisation = Parametrisation.CRR
     discounting:     DiscountingMode = DiscountingMode.CONTINUOUS
 
-
-# ---------------------------------------------------------------------------
 # Black-Scholes
-# ---------------------------------------------------------------------------
 
 def black_scholes(params: OptionParams) -> float:
     """
@@ -79,10 +73,7 @@ def black_scholes(params: OptionParams) -> float:
     else:
         return float(K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1))
 
-
-# ---------------------------------------------------------------------------
 # CRR helper: u, d factors
-# ---------------------------------------------------------------------------
 
 def _up_down_factors(params: OptionParams, dt: float) -> tuple[float, float]:
     """Return (u, d) factors for a single time step dt."""
@@ -99,10 +90,7 @@ def _up_down_factors(params: OptionParams, dt: float) -> tuple[float, float]:
 
     return u, d
 
-
-# ---------------------------------------------------------------------------
 # CRR binomial pricer
-# ---------------------------------------------------------------------------
 
 def crr_price(params: OptionParams, N: int) -> float:
     """
@@ -159,9 +147,7 @@ def crr_price(params: OptionParams, N: int) -> float:
     return float(V[0])
 
 
-# ---------------------------------------------------------------------------
 # Convergence study
-# ---------------------------------------------------------------------------
 
 def convergence_series(
     params: OptionParams,
@@ -213,10 +199,7 @@ def convergence_series(
         "err_jr":  [abs(p - bs) for p in jr_prices],
     }
 
-
-# ---------------------------------------------------------------------------
 # Stock price tree (for visualisation)
-# ---------------------------------------------------------------------------
 
 def stock_tree(params: OptionParams, N: int) -> np.ndarray:
     """

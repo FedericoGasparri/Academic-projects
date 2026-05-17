@@ -26,9 +26,7 @@ except ImportError:
 from .models import OptionParams, OptionType, ExerciseStyle, Parametrisation, DiscountingMode
 
 
-# ---------------------------------------------------------------------------
 # Internal helpers
-# ---------------------------------------------------------------------------
 
 def _require_yfinance():
     if not _YFINANCE_AVAILABLE:
@@ -55,10 +53,7 @@ def _scalar(val) -> float:
         return float(val.iloc[-1])
     return float(val)
 
-
-# ---------------------------------------------------------------------------
 # Historical volatility
-# ---------------------------------------------------------------------------
 
 def historical_volatility(ticker: str, window_days: int = 252) -> float:
     _require_yfinance()
@@ -78,10 +73,7 @@ def historical_volatility(ticker: str, window_days: int = 252) -> float:
     sigma   = float(np.asarray(log_ret).std() * np.sqrt(252))
     return sigma
 
-
-# ---------------------------------------------------------------------------
 # Risk-free rate proxy
-# ---------------------------------------------------------------------------
 
 def risk_free_rate(region: str = "us") -> float:
     if region == "us":
@@ -103,10 +95,7 @@ def risk_free_rate(region: str = "us") -> float:
 
     raise ValueError(f"Unknown region '{region}'. Use 'us' or 'eu'.")
 
-
-# ---------------------------------------------------------------------------
 # Options chain
-# ---------------------------------------------------------------------------
 
 def options_chain(ticker: str, expiry: str | None = None) -> pd.DataFrame:
     _require_yfinance()
@@ -144,10 +133,7 @@ def options_chain(ticker: str, expiry: str | None = None) -> pd.DataFrame:
             "expiry", "underlyingPrice"]
     return df[[c for c in cols if c in df.columns]]
 
-
-# ---------------------------------------------------------------------------
 # Build OptionParams from live market data
-# ---------------------------------------------------------------------------
 
 def option_params_from_market(
     ticker:         str,
@@ -209,10 +195,7 @@ def option_params_from_market(
     }
     return params, meta
 
-
-# ---------------------------------------------------------------------------
 # Summary helper
-# ---------------------------------------------------------------------------
 
 def print_market_summary(meta: dict) -> None:
     print("\n" + "=" * 50)

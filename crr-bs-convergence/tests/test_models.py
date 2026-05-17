@@ -17,14 +17,11 @@ from src.models import (
     black_scholes, crr_price, convergence_series, stock_tree,
 )
 
-
-# ---------------------------------------------------------------------------
 # Fixtures
-# ---------------------------------------------------------------------------
 
 @pytest.fixture
 def paper_params():
-    """Parameters from the original university paper."""
+    """Lecture parameters."""
     return OptionParams(
         S0=27.0, K=25.0, r=0.015, sigma=0.20, T=0.410959,
         option_type=OptionType.PUT,
@@ -43,10 +40,7 @@ def call_params():
         discounting=DiscountingMode.CONTINUOUS,
     )
 
-
-# ---------------------------------------------------------------------------
 # Black-Scholes
-# ---------------------------------------------------------------------------
 
 class TestBlackScholes:
 
@@ -89,10 +83,7 @@ class TestBlackScholes:
         with pytest.raises(ValueError):
             black_scholes(p)
 
-
-# ---------------------------------------------------------------------------
 # CRR model
-# ---------------------------------------------------------------------------
 
 class TestCRRPrice:
 
@@ -146,9 +137,7 @@ class TestCRRPrice:
         assert abs(price - expected) < 1e-10
 
 
-# ---------------------------------------------------------------------------
 # Convergence series
-# ---------------------------------------------------------------------------
 
 class TestConvergenceSeries:
 
@@ -167,10 +156,7 @@ class TestConvergenceSeries:
         data = convergence_series(call_params, n_steps=[1, 5, 100])
         assert len(set(data["bs"])) == 1
 
-
-# ---------------------------------------------------------------------------
 # Stock tree
-# ---------------------------------------------------------------------------
 
 class TestStockTree:
 
